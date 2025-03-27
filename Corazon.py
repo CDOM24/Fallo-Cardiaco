@@ -3,9 +3,14 @@ import numpy as np
 import streamlit as st
 import pandas as pd
 import joblib
+import os
+
+
 
 # Cargar modelo
 modelo = joblib.load('modelo_logistico.pkl')
+with open('modelo_logistico.pkl', 'rb') as f:
+    modelo = joblib.load(f)
 
 # Título
 st.set_page_config(page_title="Predicción Fallo Cardíaco", page_icon="❤️")
@@ -34,3 +39,6 @@ if st.button("Predecir"):
         st.error(f"⚠️ Riesgo de muerte detectado (probabilidad: {prob:.2%})")
     else:
         st.success(f"✅ Bajo riesgo de muerte (probabilidad: {prob:.2%})")
+
+
+print(os.path.exists('modelo_logistico.pkl'))  # Debe devolver Trueprint(os.path.abspath('modelo_logistico.pkl'))  # Muestra la ruta completa
