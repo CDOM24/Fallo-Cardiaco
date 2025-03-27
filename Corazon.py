@@ -4,7 +4,7 @@ import streamlit as st
 import pandas as pd
 import joblib
 import os
-
+import pywin32  
 
 
 # Cargar modelo
@@ -41,4 +41,8 @@ if st.button("Predecir"):
         st.success(f"✅ Bajo riesgo de muerte (probabilidad: {prob:.2%})")
 
 
-print(os.path.exists('modelo_logistico.pkl'))  # Debe devolver Trueprint(os.path.abspath('modelo_logistico.pkl'))  # Muestra la ruta completa
+print(os.path.exists('modelo_logistico.pkl'))  # Debe devolver Trueprint(os.path.abspath('modelo_logistico.pkl'))  
+# En tu script (Corazon.py):
+import os
+if os.name == 'nt':  # Solo en Windows
+  
